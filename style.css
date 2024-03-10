@@ -1,0 +1,562 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', calibri;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background: #080808;
+    color: white;
+}
+/*styling for header container*/
+#header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    padding: 0px 5%;
+}
+nav{
+    /* image and text side by side*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.logo{
+    width: 250px;
+}
+nav ul li{
+    /* so everything horizontally aligned*/
+    display: inline-block;
+    list-style: none;
+    /* 10px between each menu item, 20px from sides of screen*/
+    margin: 50px 40px;
+    margin-top: 12%;
+}
+
+/* changing font and text*/
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+/* adding an underline on each item when hovered over*/
+nav ul li a::after{
+    content: '';
+    /* width 0 = hidden*/
+    width: 0%;
+    height: 3px;
+    background: #3b7ad8;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width: 100%; 
+}
+
+/* when adding css for a class, do .classname*/
+.header-text{
+    /* add space from top*/
+    margin-top: 12%;
+    font-size: 30px;
+
+}
+.header-text h1{
+    font-size: 60px;
+    margin-top: 12px;
+}
+.header-text h1 span{
+    color: #3b7ad8;
+}
+
+/* -------------- about ------------ */
+/* for id's use # */
+#about{
+    padding: 80px 0;
+    color: #ababab;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* for image */
+.about-col-1{
+    /* width of column is 35% of page*/
+    flex-basis: 35%;
+}
+.about-col-1 img{
+    width: 70%;
+    /* makes corner round */
+    border-radius: 15px;
+}
+/* for text about me*/
+.about-col-2{
+    flex-basis: 65%;
+}
+
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* styling for text about me*/
+.about-col-2 p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    text-align: left;
+}
+
+.tab-titles{
+    display: flex;
+    margin: 20px 0 60px;
+
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+/* underline effect when hover*/
+
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #3b7ad8;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    /* 10px from top and bottom, left+right = 0*/
+    margin: 10px 0;
+
+}
+.tab-contents ul li span{
+    color: #154cc4;
+    font-size: 22px;
+}
+/* hides all tabs content, only appears if hovered over */
+.tab-contents{
+    display: none;
+}
+
+.tab-contents.active-tab{
+    display: block;
+}
+
+
+/* ----------------------- objectives ---- */
+/* rem =  dictates an element font size relative to the size of the 
+root element*/
+
+#services{
+    padding: 50px 0; /* 30px top and bottom, left + right = zero.*/
+}
+
+.services-list{
+    display: flex;
+    margin-top: 50px;
+}
+
+/* styling text */
+.services-list div{
+    padding: 40px; /* how far down it is*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-size:18px;
+    font-weight: 300;
+    border-radius: 15px; /*curved corners*/
+    flex: 20 20 18.75rem;  /* controls dimension of each div*/
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    transition: transform 250ms;
+}
+.card:not(:first-child) {
+    margin-left: -8.125rem;
+}
+
+.card:hover {
+    transform: translate(-0.5rem, -1rem)
+    rotate(2deg);
+}
+
+.card:hover ~ .card {
+    transform: translateX(10.125rem);  /* Controls how much the card shifts when another is hovered over */
+
+}
+
+/* for icons */
+.services-list div i{
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.services-list div h2{
+    font-size: 30px;
+    font-weight: 650;
+    margin-bottom: 15px;
+}
+
+/*----------------------------- Portfolio ------------------------------*/
+
+#portfolio{
+    padding: 60px 0;
+
+}
+
+.experience-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 1 fraction*/
+    grid-gap: 30px;
+    margin-top: 50px;
+}
+
+.experience{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.experience img{
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+
+}
+
+/* layering effect when hovered, text appears */
+
+.layer{
+    width: 100%;
+    height: 0%; /* set the height to 0 initially, then when hovered, height 100*/
+    /* gradient colour, between black 60% opacity and blue*/
+    background: linear-gradient(rgba(0,0,0,0.6), rgb(146, 191, 212));
+    border-radius: 10px;
+
+    /* change position of where this layer is*/
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    /* move text in center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+
+}
+
+/* decorating text*/
+
+.layer h3{
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.layer a{
+    margin-top: 20px;
+    color: rgb(81, 81, 180);
+    text-decoration: none; /* no underline*/
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* circle icon*/
+
+    /* this is for icon */
+    font-size: 18px;
+    text-align: center;
+
+}
+
+.experience:hover img{
+    transform: scale(1,1); /* ensure scale is same*/
+    /* animation, zooms into image a bit*/
+
+
+}
+
+.experience:hover .layer{
+    height: 100%;
+}
+
+.button {
+    display: block;
+    width: fit-content;
+    margin: 50px auto; /* center, downwards.*/
+    text-decoration: none;
+    border: 1px solid;
+    /* space between text and border*/
+    padding: 14px 50px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 18px;
+    transition: background 0.5s;
+}
+
+.button:hover{
+    background:rgb(85, 122, 172);
+}
+
+
+
+
+/* -------------------------Contact info-------------------------- */
+.sub-title.contact{
+    margin-left: 150px;
+}
+.contact-left{
+    flex-basis: 55%;
+    
+
+}
+
+
+.contact-right{
+    flex-basis: 45%;
+    
+    
+}
+
+.contact-left p{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.contact-left p i{
+    color:#0072b1;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.button.button2{
+    margin-top: 25px; /* how much space from element above*/
+    display: inline-block;
+    background:rgb(85, 122, 172);
+    margin-left: 150px;
+}
+
+/* submit button*/
+
+.button.button3{
+    margin-top: 15px; /* how much space from element above*/
+    margin-right: 300px;
+    background:rgb(85, 122, 172);
+    
+}
+
+
+.social-icons {
+    margin-top: 30px;
+    margin-left: 148px;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 25px;
+    gap: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+    border-radius: 10px;
+  }
+  
+  /* for all social containers*/
+  .socialContainer {
+    width: 52px;
+    height: 52px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition-duration: .3s;
+
+    border-radius: 10px;
+  }
+  /* instagram*/
+  .containerOne:hover {
+    background-color: #d62976;
+    transition-duration: .3s;
+  }
+  /* twitter*/
+  .containerTwo:hover {
+    background-color: #00acee;
+    transition-duration: .3s;
+  }
+  /* linkdin*/
+  .containerThree:hover {
+    background-color: #0072b1;
+    transition-duration: .3s;
+  }
+  /* Whatsapp*/
+  .containerFour:hover {
+    background-color: #128C7E;
+    transition-duration: .3s;
+  }
+  
+  .socialContainer:active {
+    transform: scale(0.9);
+    transition-duration: .3s;
+  }
+  
+  .socialSvg {
+    width: 17px;
+  }
+  
+  .socialSvg path {
+    fill: rgb(0, 0, 0);
+  }
+  
+  .socialContainer:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+  }
+  
+  @keyframes slide-in-top {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+.contact-right form{
+    width: 100%;
+    margin-right: 300px;
+}
+  
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #fff;
+    padding: 15px;
+    margin: 15px 0;
+    color: #000000;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+
+/* Copyright */
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+
+
+}
+
+/* --------------- CSS for small screen -------------------*/
+
+/* hides the menu and x icon unless its a phone screen*/
+nav .fa-solid{
+    display: none;
+}
+
+@media only screen and (max-width: 1000px){
+    #header{
+        background-image: url(images/phonebg.jpg);
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fa-solid{
+        display: block;
+        font-size: 25px;
+    }
+
+    /* when the X is clicked, the menu becomes hidden*/
+    nav ul{
+        background: #4670be;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+        
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
+    }
+
+    /* move the X to the top*/
+    nav ul .fa-solid{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;    
+
+    }
+
+    .sub-title{
+        font-size: 40px;
+    }
+
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+
+    .about-col-2{
+        font-size: 14px;
+    }
+
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+   
+}
