@@ -203,7 +203,7 @@
                         <a href="c:\Users\Beam\Downloads\Beam_s_resume (1).pdf" class="button button2">Download Cv</a>
                     </div>
                 <div class="contact-right">
-                    <form>
+                    <form name="submit-to-google-sheet">
                         <input type="text" name="Name" placeholder="Your Name"  required>
                         <input type="email" name="Email" placeholder="example@email.com" required>
                         <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
@@ -262,6 +262,17 @@
                 sidemenu.style.right = "-200px";
             }
         </script>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzXb7zzSChXlwcyGQBsBCJrcrU6Fz2H5NXNwU4Wu8jSrCbBiFb6tNW5jeGT6OkkvOvJxw/exec'
+            const form = document.forms['submit-to-google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
 
     </body>
 </html>
